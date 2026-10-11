@@ -29,10 +29,6 @@ class Envhound < Formula
 
   def install
     bin.install Dir["envhound-*"].first => "envhound"
-    system "ls", "-la", bin
-    system "env"
-    system bin/"envhound", "--version"
-    system bin/"envhound", "completion", "bash"
     # zsh's completion is meant for eval in ~/.zshrc, not for fpath
     generate_completions_from_executable(bin/"envhound", "completion", shells: [:bash, :fish])
   end
