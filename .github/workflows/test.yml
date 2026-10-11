@@ -29,3 +29,6 @@ jobs:
           brew install michelsalib/envhound/envhound
           brew test michelsalib/envhound/envhound
           envhound why envhound
+      - name: Homebrew logs
+        if: failure()
+        run: cat ~/.cache/Homebrew/Logs/envhound/* ~/Library/Logs/Homebrew/envhound/* 2>/dev/null || true
