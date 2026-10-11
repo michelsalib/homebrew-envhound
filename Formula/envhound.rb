@@ -29,6 +29,8 @@ class Envhound < Formula
 
   def install
     bin.install Dir["envhound-*"].first => "envhound"
+    # a release file, downloaded as is: not executable yet
+    chmod 0755, bin/"envhound"
     # zsh's completion is meant for eval in ~/.zshrc, not for fpath
     generate_completions_from_executable(bin/"envhound", "completion", shells: [:bash, :fish])
   end
