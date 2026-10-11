@@ -37,6 +37,7 @@ class Envhound < Formula
 
   test do
     assert_equal version.to_s, shell_output("#{bin}/envhound --version").strip
-    assert_match "is not in PATH", shell_output("#{bin}/envhound why envhound-test-missing 2>&1", 1)
+    # nothing that replays the login shell: too slow in brew's sandbox
+    assert_match "envhound __complete", shell_output("#{bin}/envhound completion bash")
   end
 end
